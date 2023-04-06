@@ -77,8 +77,14 @@ namespace Dictionary
                         RemoveFromDictionary();
                         break;
                     case 4:
+                        TextWriter writer = new StreamWriter("dictionary.xml");
+                        Xml.Serialize(writer, dictionary);
+                        writer.Close();
                         break;
                     case 5:
+                        TextReader reader = new StreamReader(@"dictionary.xml");
+                        Xml.Deserialize(reader, dictionary);
+                        reader.Close();
                         break;
                     case 6:
                         Menu_continue = false;
