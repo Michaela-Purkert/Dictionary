@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CheckLibrary\CheckLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
