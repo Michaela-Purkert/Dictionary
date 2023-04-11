@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,11 +75,23 @@ namespace Dictionary
 
             Console.WriteLine("1 - Add a new czech word with its english translation");
             Console.WriteLine("2 - View the entire dictionary");
-            Console.WriteLine("3 - Remove from dictionary");
-            Console.WriteLine("4 - Export dictionary to XML");
-            Console.WriteLine("5 - Import dictionary from XML");
+            Console.WriteLine("3 - Remove from the dictionary");
+            Console.WriteLine("4 - Export the dictionary to the local XML");
+            Console.WriteLine("5 - Import the dictionary from the local XML");
             Console.WriteLine("6 - End program");
 
+        }
+
+        private void FileExists()
+        {
+            if (File.Exists("dictionary.xml"))
+            {
+                TextReader reader = new StreamReader(@"dictionary.xml");
+                Xml.Deserialize(reader, dictionary);
+                reader.Close();
+            }
+            else
+                Console.WriteLine("File doesn't exist");
         }
         public void Menu()
         {
@@ -104,9 +117,7 @@ namespace Dictionary
                         writer.Close();
                         break;
                     case 5:
-                        TextReader reader = new StreamReader(@"dictionary.xml");
-                        Xml.Deserialize(reader, dictionary);
-                        reader.Close();
+                        FileExists();
                         break;
                     case 6:
                         Menu_continue = false;
