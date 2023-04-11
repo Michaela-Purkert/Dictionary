@@ -21,10 +21,14 @@ namespace Dictionary
             string wordCZ = Check.NotEmptyString();
             Console.WriteLine("Choose an english translation:");
             string translationEN = Check.NotEmptyString();
+
+            if (!dictionary.ContainsKey(wordCZ))
+                dictionary.TryAdd(wordCZ, translationEN);
+            else
+                Console.WriteLine("The word '" + wordCZ + "' is already in the dictionary");
+
             Console.ReadKey();
             Console.Clear();
-
-            dictionary.Add(wordCZ, translationEN);
         }
 
         private void ShowDictionary()
