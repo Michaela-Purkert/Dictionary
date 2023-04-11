@@ -20,6 +20,9 @@ namespace Dictionary
             }
             XmlSerializer serializer = new XmlSerializer(typeof(List<Entry>));
             serializer.Serialize(writer, entries);
+            Console.WriteLine("Task completed successfully");
+            Console.ReadKey();
+            Console.Clear();
         }
         public static void Deserialize(TextReader reader, IDictionary dictionary)
         {
@@ -30,6 +33,9 @@ namespace Dictionary
             {
                 dictionary[entry.Key] = entry.Value;
             }
+            Console.WriteLine("Task completed successfully");
+            Console.ReadKey();
+            Console.Clear();
         }
         public class Entry
         {

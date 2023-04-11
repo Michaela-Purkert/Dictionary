@@ -21,7 +21,8 @@ namespace Dictionary
             string wordCZ = Check.NotEmptyString();
             Console.WriteLine("Choose an english translation:");
             string translationEN = Check.NotEmptyString();
-            Console.WriteLine("");
+            Console.ReadKey();
+            Console.Clear();
 
             dictionary.Add(wordCZ, translationEN);
         }
@@ -29,21 +30,38 @@ namespace Dictionary
         private void ShowDictionary()
         {
             if (dictionary.Count == 0)
+            {
                 Console.WriteLine("First fill dictionary with at least any value\n");
+                Console.ReadKey();
+                Console.Clear();
+            }
             else
             {
                 foreach (var words in dictionary)
                 {
                     Console.WriteLine("Czech version: '" + words.Key + "', english translate: '" + words.Value + "'");
                 }
+                Console.ReadKey();
+                Console.Clear();
             }
         }
 
         private void RemoveFromDictionary()
         {
-            Console.WriteLine("Write a czech word you want to remove from the dictionary:");
-            string removeWord = Check.NotEmptyString();
-            dictionary.Remove(removeWord);
+            if (dictionary.Count == 0)
+            {
+                Console.WriteLine("Dictionary must first contain any values\n");
+                Console.ReadKey();
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine("Write a czech word you want to remove from the dictionary:");
+                string removeWord = Check.NotEmptyString();
+                dictionary.Remove(removeWord);
+                Console.ReadKey();
+                Console.Clear();
+            }
         }
 
         private void MenuText()
